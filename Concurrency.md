@@ -1,8 +1,8 @@
 # Concurrency
 
 There are two basic units of execution:
-- Processes: have a self-contained execution environment and are allocated memory space
-- Threads: sometimes called lightweight processes, they also provide execution environments but at a lower resource costs.  Threads also exist within processes (every process has at least one)
+- Processes: have a self-contained execution environment and are allocated memory space.
+- Threads: sometimes called lightweight processes, they also provide execution environments but at a lower resource costs.  Threads also exist within processes (every process has at least one).
 
 ## Bugs caused by Multi-Threading
 

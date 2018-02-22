@@ -20,36 +20,44 @@ The JVM is an abstract runtime environment in which Java bytecode can be execute
 ## The Java Memory Model
 
 ### Stack
-- Holds references to heap objects and stores primitives
-- Once a method is complete, the stack frame for the method (which contains the local variables) is popped off the stack
-- 1 stack/thread, therefore thread-safe
+- Holds references to heap objects and stores primitives.
+- Once a method is complete, the stack frame for the method (which contains the local variables) is popped off the stack.
+- 1 stack/thread, therefore thread-safe.
 
 ### Heap
-- Only one heap per JVM process (multiple threads use the heap at the same time, so not thread-safe)
-- Stack variables point to objects on the heap
-- Objects on the heap can point to other objects on the heap
+- Only one heap per JVM process (multiple threads use the heap at the same time, so not thread-safe).
+- Stack variables point to objects on the heap.
+- Objects on the heap can point to other objects on the heap.
 - Much larger than stack in terms of memory size.
 
 ### Stack-Heap References
-- Strong: Object on heap is never garbage collected if a strong reference is pointing to it or if it is reachable from the stack through a chain of strong references
-- Weak: Will not survive a garbage collection 
-- Soft: Cleaned by garbage collection if the application is running out of memory
+- Strong: Object on heap is never garbage collected if a strong reference is pointing to it or if it is reachable from the stack through a chain of strong references.
+- Weak: Will not survive a garbage collection.
+- Soft: Cleaned by garbage collection if the application is running out of memory.
 
 ### Strings (Objects in Java)
-- Identical string literals are stored in the same heap object in the string pool
+- Identical string literals are stored in the same heap object in the string pool.
 ```Java
 String one = "Hello";
 String two = "Hello";
 //one == two will return true as they both have the same heap address
 ```
-- Computed strings are not stored in the same heap object
+- Computed strings are not stored in the same heap object.
 ```Java
 String one = "297";
 String two = new Integer(297).toString()
 //one != two as they have different addresses on the heap
 ```
-- A computed string can be added to the string pool using the String object's .intern() method
+- A computed string can be added to the string pool using the String object's .intern() method.
 
 ## Generational Garbage Collection
+- Garbage collection is generally inefficient because the entire program must halt.
+- The basis of garbage collection is the mark-and-sweep process.  This process looks for objects on the heap that are strongly (or softly) referenced by an item on the stack.  "Living" objects are marked; unmarked objects are deallocated upon sweeping.
+- If an object survives a mark-and-sweep a certain number of times (the threshold value depends on JVM implementation), it is moved to an "older" part of the heap".  Older parts of the heap are garbage collected less often (it is assumed that the more mark-and-sweeps an object survives, the longer it will persist).  This decreases the average garbage collection time for every iteration.
+- Types:
+    - Serial GC: Single-threaded
+    - Parallel GC: Multi-threaded
+    - Mostly Concurrent GC: Runs concurrently to application (there is a small pause)
+        - Garbage First: high throughput with a reasonable pause
 
 ## Hotspot Optimization
