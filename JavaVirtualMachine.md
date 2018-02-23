@@ -13,7 +13,7 @@ The JVM is an abstract runtime environment in which Java bytecode can be execute
     - Native method stack: Holds native method info.
 3. Execution Engine
     - Interpreter: Interprets and executes Java bytecode (a form of instruction set designed for efficient execution by a software interpreter)
-    - JIT Compiler: Eliminates need for certains methods to be reinterpreted every time they are run (see section on Hotspot Optimization).  Instead, it is compiled to native code, which executes faster.
+    - JIT (Just-in-Time) Compiler: Eliminates need for certains methods to be reinterpreted every time they are run (see section on Hotspot Optimization).  Instead, it is compiled to native code, which executes faster.
 4. Native Method Interface: Interacts with the Native Method Libraries and provides the Native Libraries required for the Execution Engine.
 5. Native Method Libraries: A collection of the Native Libraries which are required for the Execution Engine.
 
@@ -58,6 +58,11 @@ String two = new Integer(297).toString()
     - Serial GC: Single-threaded
     - Parallel GC: Multi-threaded
     - Mostly Concurrent GC: Runs concurrently to application (there is a small pause)
-        - Garbage First: high throughput with a reasonable pause
+        - Garbage First: High throughput with a reasonable pause
+        - Concurrent Mark Sweep: Minimum pause time
 
 ## Hotspot Optimization
+- Hotspot optimization occurs in the Java Hotspot VM
+- Two main features:
+    - Adaptive Optimization: The JVM determines which methods (in interpreted bytecode) are "hotspots" based on how often they are executed.  Hotspots are then compiled to significantly faster native code (the method's interpreted bytecode can still be called during compilation and optimization).  The hotspot method of optimization is a much faster JIT compilation and results in better-optimized code as the JVM has more time to perform optimizations than traditional JIT methods.
+    - Adaptive Inlining: Optimizers don't work as well when crossing method boundaries since they have to focus on code between method invocations.  The solution to this issue is inlining: copying the invoked method's body into the body of the invoking method.  Inlining is hard to do in OOP languages (such as Java and C++) as multiple implementations of a method have to be chosen at runtime.  As a result,one way of inlining is to inline every possible implementation of method...however, this is memory-inefficient.  The Hotspot VM inlines  "hotspot" methods at runtime before JIT compilation, greatly reducing the number of methods that need to be inlined. 
