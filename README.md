@@ -1,6 +1,6 @@
 # Justin's Interview Prep Notes
 ## What is this?
-These notes are meant as bite-sized summaries of an assortment of Computer Science topics for the intermediate programmer (~ 1st or 2nd year CS student).  They are a great way of quickly preparing (i.e. cramming) for programming interviews.  I'll try to add more topics as I learn more.
+These notes are meant as bite-sized summaries of an assortment of Computer Science theory topics for the intermediate programmer (~ 1st or 2nd year CS student).  They are a great way of quickly preparing (i.e. cramming) for programming interviews.  This repo is not intended to be a guide for the actual programming portion of the interview and there are very few code samples on the repo.  I'll try to add more topics as I learn more.  
 ## I spotted an error!
 That's great!  If you find an error, open an issue pointing out the error, indicate the corrections that need to be made, and provide a supporting resource (a photo of a textbook, Stack Overflow, documentation, etc.).  Alternatively, you can fork the repo, make the changes on your own repo, then create a PR (with the supporting resource).  I'll try to review the PR promptly and merge it into the main repo.  Please remember to spellcheck your changes before creating the PR.
 ## Want to see a specific topic?
