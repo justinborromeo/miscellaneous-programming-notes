@@ -1,5 +1,5 @@
 # GraphQL
-GraphQL is a more flexible and efficient (in terms of data and speed) way of querying for data from an API.
+GraphQL is a more flexible and efficient (in terms of data and speed) way of querying for data from an API.  Query strings are sent in the body of HTTP POST requests to APIs.
 ## Why GraphQL Instead of REST
 - It eliminates the need to hit multiple REST endpoints to get data.  Only one query is needed for a single endpoint to get multiple pieces of data; this eliminates the combined latency involved with multiple HTTP requests executed serially.
 - Users can query specific fields of data (instead of receiving a predetermined set of information and filtering it client-side) from the API.
@@ -16,7 +16,26 @@ GraphQL is a more flexible and efficient (in terms of data and speed) way of que
     }
     ``` 
 
-- Mutation: a GraphQL call that updates information in an application's database through an API
+- Mutation: a GraphQL call that updates information in an application's database through an API.  Mutations are structured as follows:
+  ```javascript  
+    mutation {
+      mutationName(input: {MutationNameInput!}) {
+        MutationNamePayload
+    }
+  ```
+  An example mutation is as follows:
+  ```javascript
+    mutation AddReactionToIssue { //mutation label and the name of function, "AddReactionToIssue"
+      addReaction(input:{subjectId:"MDU6SXNzdWUyMzEzOTE1NTE=",content:HOORAY}) { //
+        reaction {
+          content
+        }
+        subject {
+          id
+        }
+      }
+    }
+  ```
 - Subscriptions
 
 
@@ -49,7 +68,7 @@ GraphQL is a more flexible and efficient (in terms of data and speed) way of que
   }
 }
 ```
-This query returns the following:
+When returning graphs, the query returns a ItemConnection object.  This object is traversed using edge{node{...}} syntax (standard for all GraphQL queries).  The previous query returns the following:
 ```javascript
 {
   "data": {
@@ -94,3 +113,9 @@ This query returns the following:
 }
 ```
 Note: the schema of the returned data matches the schema of the GraphQL query.
+
+
+Note: While query fields are executed in parallel, mutation fields run in series, one after the other.
+
+
+## Variables
