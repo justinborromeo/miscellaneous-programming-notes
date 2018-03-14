@@ -6,7 +6,7 @@ That's great!  If you find an error, open an issue pointing out the error, indic
 ## Want to see a specific topic?
 If you want to see a topic that doesn't already exist in the notes, create an issue and let me know!
 ## Want to contribute?
-For sure!  If you have notes that you believe would be useful for a programming interview, create a PR with the notes and I'll add them as soon as possible.  Please keep the notes concise (i.e. don't copy and paste large blocks of documentaiton), PG, appropriate for an intermediate programmer, and free of any typos.    
+For sure!  If you have notes that you believe would be useful for a programming interview, create a PR with the notes and I'll add them as soon as possible.  Please keep the notes concise (i.e. don't copy and paste large blocks of documentaiton), PG, appropriate for an intermediate programmer, and free of any typos.  Also, try to cover topics that are generally useful and not overly specific.
 
 If you don't have a specific topic in mind, take a look through the suggested topics in the issues and see if there's any topics that you would be interested in writing about.
 ## Did you find these notes useful and want to show your support?  
