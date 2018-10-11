@@ -26,3 +26,9 @@
 - ps [option] [pid]: displays a table of processes started by user.  Use the option "aux" to show all processes
 - kill pid: kill process w/ ID pid
 - killall processname: kill process w/ name processname
+- w: displays statistics about the users currently on the machine and their processes
+## Networking
+- netstat: prints network connections, routing tables, and interface statistics
+- ifconfig: configure a network interface - no arguments displays the status of the currently active interfaces
+- nslookup: queries internet name servers (i.e. find a URL's IP address)
+- lsof: displays open files and sockets (lsof -i for just sockets)
